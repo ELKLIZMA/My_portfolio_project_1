@@ -65,11 +65,11 @@ def popitka():
         else:
             print("Неверный формат. Введите товар и количество через пробел.")
     return (pos[0], pos[1])
-if os.path.exists(folder_path):
-    check_and_create_file()
-else:
-    os.mkdir(folder_path)
-    print("Папка создана")
-    check_and_create_file()
-print("Приветствую в меню")
-print("Здесь вы моженте смотреть и менять ваш список покупок")
+# if os.path.exists(folder_path):
+#     check_and_create_file()
+# else:
+#     os.mkdir(folder_path)
+#     print("Папка создана")
+#     check_and_create_file()
+# print("Приветствую в меню")
+# print("Здесь вы моженте смотреть и менять ваш список покупок")

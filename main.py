@@ -37,7 +37,12 @@ async def start_handler(message: Message):
 # Handler конкретного текста
 @router.message(F.text == "список покупок")
 async def show_shopping_list_handler(message: Message):
-    text = shopping.shop_list
+    lines = []
+
+    for name, count in shopping.shop_list:
+        lines.append(f"{name} — {count} шт.")
+
+    text = "\n".join(lines)
 
     await message.answer(f"твой список покупок: {text}")
 
