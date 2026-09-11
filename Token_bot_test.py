@@ -20,11 +20,11 @@ router = Router()
 # Handler команды /start
 @router.message(CommandStart())
 async def start_handler(message: Message):
-    await message.answer("Привет! Бот работает.")
+    await message.answer("Привет, я первая версия персонального помощника.")
 
 
 # Handler конкретного текста
-@router.message(F.text == "тест")
+@router.message(F.text == "список покупок")
 async def test_handler(message: Message):
     text = message.text
 
