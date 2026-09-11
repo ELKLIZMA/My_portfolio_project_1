@@ -48,28 +48,4 @@ def upload(shop_list):
     with open(original, 'w', encoding="utf-8") as file:
         for name, count in shop_list:
             file.write(f"{name}: {count}\n")
-def popitka():
-    while True:
-        pos = input().split()
-        if len(pos) == 2:
-            try:
-                pos[1] = int(pos[1])
-            except ValueError:
-                print("Вы ввели некорректные данные, попробуйте ещё раз, тут нужно вводить числа")
-            else:
-                if pos[1] > 0:
-                    break
-                else:
-                    print("Вы не можете добавить отрицательное кол-во товаров")
 
-        else:
-            print("Неверный формат. Введите товар и количество через пробел.")
-    return (pos[0], pos[1])
-# if os.path.exists(folder_path):
-#     check_and_create_file()
-# else:
-#     os.mkdir(folder_path)
-#     print("Папка создана")
-#     check_and_create_file()
-# print("Приветствую в меню")
-# print("Здесь вы моженте смотреть и менять ваш список покупок")

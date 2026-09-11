@@ -40,12 +40,39 @@ async def show_shopping_list_handler(message: Message):
     lines = []
 
     for name, count in shopping.shop_list:
-        lines.append(f"{name} — {count} шт.")
+        lines.append(f" {name} — {count} шт.")
 
     text = "\n".join(lines)
 
     await message.answer(f"твой список покупок: {text}")
 
+@router.message(F.text.startswith("добавить "))
+async def add_product_handler(message: Message):
+    parts = message.text.split()
+
+    if len(parts) != 3:
+        await message.answer(
+            "Напишите наименование товара и его количество, через пробел"
+        )
+        return
+
+    product = parts[1]
+
+    try:
+        count = int(parts[2])
+    except ValueError:
+        await message.answer("Количество должно быть числом.")
+        return
+
+    if count <= 0:
+        await message.answer("Количество должно быть больше нуля.")
+        return
+
+    shopping.add(product.capitalize(), count)
+
+    await message.answer(
+        f"Добавлено: {product} — {count} шт."
+    )
 
 
 # Fallback: любой другой текст
